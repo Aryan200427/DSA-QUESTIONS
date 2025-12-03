@@ -1,0 +1,32 @@
+https://leetcode.com/problems/combination-sum/submissions/1843027210
+
+Aryan(23SCSE1010175)
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> comb=new ArrayList<>();
+        List<Integer> arr=new ArrayList<>();
+        helper(0,comb, arr, candidates,target);
+        return comb;
+    }
+
+    public void helper(int i,List<List<Integer>> comb,List<Integer> arr, int[] c,int t){
+        if(i==c.length){
+            
+            return ;
+        }
+        if(t==0){
+            comb.add(new ArrayList<>(arr));
+            return;
+        }
+        
+        if(c[i]<=t){
+            arr.add(c[i]);
+            helper(i,comb,arr,c,t-c[i]);
+
+            arr.remove(arr.size()-1);
+        }
+        helper(i+1,comb,arr,c,t);
+        return;
+    }
+}
